@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./expanded.css";
 
 export const metadata: Metadata = {
   title: "TRUSTed Digital Architecture | Designing the Digital Foundation of Modern Business",

@@ -1,28 +1,44 @@
 # TRUSTed Digital Architecture
 
-Public marketing website for TRUSTed Digital Architecture: a premium digital architecture firm for Website Architecture, custom software, AI systems, learning and studio platforms, automation, and managed digital operations.
+Public Next.js marketing website for TRUSTed Digital Architecture, a founder-led digital architecture and software development firm.
 
 ## Local development
+
+This project owns port `3023`.
 
 ```bash
 npm install
 npm run dev
 ```
 
-The development server is available at `http://localhost:3000`.
+Open `http://localhost:3023` or double-click `START_APP.bat`. The launcher verifies dependencies and the responding site before opening the browser. `STOP_APP.bat` stops only a verified server for this project.
 
-Build the production site with:
+## Verification
 
 ```bash
+npm run lint
+npm run typecheck
+npm test
 npm run build
 ```
 
+## Public routes
+
+- `/` — homepage
+- `/services` and nine service detail pages
+- `/solutions` and eight solution detail pages
+- `/products`, `/industries`, `/process`, `/about`, `/contact`
+- `/website-audit`, `/privacy`, `/terms`
+
+Contact and website-audit forms are explicitly non-functional previews. No authentication, database, payments, external AI provider, API key, or backend service is included.
+
 ## Deployment
 
-This project is configured for Vercel's Next.js framework detection. Import the GitHub repository in Vercel and deploy with the default settings. No environment variables, custom domains, or DNS changes are required.
+Vercel uses the repository root, Next.js framework preset, `npm install`, `npm run build`, and the default `.next` output directory. No environment variables or custom-domain changes are required.
 
 ## Repository continuity
 
-- `PROJECT_STATUS.md` records the current state and verification evidence.
+- `PROJECT_STATUS.md` records current state and verification evidence.
 - `BACKLOG.md` contains one active mission and one next ready mission.
 - `DECISIONS.md` records founder-approved product and deployment decisions.
+- `docs/TRUSTed_Digital_Architecture_Full_Website_Copy_and_Codex_Mission.md` is the current founder-approved website specification.

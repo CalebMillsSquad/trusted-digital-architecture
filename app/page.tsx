@@ -1,66 +1,35 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { processStages, products, services } from "@/lib/site-content";
 
-const projectEmail = "mailto:caleb@trustedacademy.net?subject=TRUSTed%20Digital%20Architecture%20Project";
-
-const layers = [
-  ["Business", "Business Architecture", "The strategic foundation that aligns your offers, operations, and growth priorities."],
-  ["Web", "Website Architecture", "A premium digital presence designed to make your business easier to understand and choose."],
-  ["AI", "AI Systems", "AI chatbots and AI employees shaped around useful, human-centered workflows."],
-  ["Ops", "Operations", "Dashboards, automation, client portals, and connected systems that make daily work lighter."],
-] as const;
-
-const solutions = [
-  ["Website Architecture", "Strategic websites that are clear, credible, and built to convert.", "▣"],
-  ["Software Development", "Custom software and platforms engineered around how your business actually works.", "</>"],
-  ["AI Solutions", "Intelligent systems that automate decisions and create useful new capacity.", "✦"],
-  ["Automation & Operations", "Connected operations that reduce friction and help the right work move forward.", "◎"],
-];
-
-const industries = ["Professional Services", "Healthcare", "Finance", "Technology", "Manufacturing", "Real Estate", "E-commerce", "Nonprofit"];
-const process = [["Discover", "We find the signal in your business, users, and goals."], ["Architect", "We define the strategic structure and technical blueprint."], ["Design", "We craft an experience with clarity, warmth, and purpose."], ["Develop", "We build with precision, quality, and scalability in mind."], ["Launch", "We bring the work to market with confidence and care."], ["Grow", "We improve, iterate, and help your system keep working."]];
+const emailHref = "mailto:caleb@trustedacademy.net?subject=TRUSTed%20Digital%20Architecture%20Project";
+const layers = ["BUSINESS", "BRAND", "WEBSITE", "SOFTWARE", "AI", "AUTOMATION", "DATA", "API", "OPERATIONS", "GROWTH"];
+const systemLabels = ["Customer", "Website", "AI Assistant", "CRM", "Inventory", "Point of Sale", "Payments", "Accounting", "Operations", "Notifications", "Analytics", "Reporting"];
+const industries = ["Automotive and Parts", "Professional Services", "Education", "Healthcare", "Finance", "Technology", "Manufacturing", "Logistics", "Construction", "Real Estate", "E-commerce", "Nonprofits and Ministries"];
 
 export default function Home() {
   const [activeLayer, setActiveLayer] = useState(0);
-  const [activeIndustry, setActiveIndustry] = useState("Professional Services");
-  const [expandedSolution, setExpandedSolution] = useState<number | null>(null);
-  const layer = layers[activeLayer];
+  return <><SiteHeader /><main>
+    <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow">TRUSTed DIGITAL ARCHITECTURE</p><h1>We architect the systems behind <em>modern business.</em></h1><p>Websites, custom software, AI systems, automation, and API integrations—designed as one connected digital architecture.</p><p>We help organizations replace fragmented tools, manual processes, and disconnected customer experiences with systems built to operate clearly, scale responsibly, and create measurable value.</p><div className="actions"><Link className="button button-dark" href={emailHref}>Start a conversation <span>→</span></Link><Link className="text-link" href="/services">Explore our capabilities <span>→</span></Link></div></div>
+      <div className="architecture-panel" aria-label="Interactive connected business architecture"><div className="architecture-grid"/><div className="layer-stack layer-stack-ten">{layers.map((layer,index)=><button key={layer} className={`architecture-layer ${activeLayer===index?"selected":""}`} onClick={()=>setActiveLayer(index)} aria-pressed={activeLayer===index}><span>{String(index+1).padStart(2,"0")}</span><b>{layer}</b><small>{activeLayer===index?"ACTIVE":"EXPLORE"}</small></button>)}</div><div className="layer-detail"><span>CONNECTED BUSINESS ARCHITECTURE</span><strong>{layers[activeLayer]}</strong><p>A unified digital foundation connecting customer experience, software, data, automation, and operations.</p></div></div></section>
 
-  return <main>
-    <header className="site-header">
-      <a className="wordmark" href="#top"><span>TRUST</span><em>ed</em><b>Digital Architecture</b></a>
-      <nav aria-label="Main navigation"><a href="#top" className="active">Home</a><a href="#solutions">Solutions</a><a href="#industries">Industries</a><a href="#process">Process</a><a href="#about">About</a></nav>
-      <a className="header-cta" href={projectEmail}>Contact</a>
-    </header>
+    <section className="philosophy section-pad"><div className="sketch-house" aria-hidden="true"><i/><i/><i/><i/></div><div><p className="eyebrow">OUR PHILOSOPHY</p><h2>Do not buy another disconnected tool. Build the right foundation.</h2><p>Digital growth begins with clear strategy, disciplined architecture, and systems designed to work together. We study how your organization operates and design a practical architecture around customers, teams, data, workflows, and long-term goals.</p></div></section>
 
-    <section className="hero" id="top">
-      <div className="hero-copy">
-        <p className="eyebrow">DIGITAL ARCHITECTURE FIRM</p>
-        <h1>Designing the<br />digital foundation of<br /><em>modern business.</em></h1>
-        <p>We architect and build websites, intelligent software, AI solutions, and scalable business systems that strengthen how modern companies operate and grow.</p>
-        <div className="actions"><a className="button button-dark" href={projectEmail}>Start a conversation <span>→</span></a><a className="text-link" href="#solutions">Explore solutions <span>→</span></a></div>
-      </div>
-      <div className="architecture-panel" aria-label="Interactive digital architecture layers">
-        <div className="architecture-grid" />
-        <p className="panel-note note-left">STRATEGY<br />ALIGNMENT</p><p className="panel-note note-right">SYSTEMS THAT<br />WORK TOGETHER</p>
-        <div className="layer-stack">
-          {layers.map(([short, title], index) => <button key={short} className={`architecture-layer ${activeLayer === index ? "selected" : ""}`} onClick={() => setActiveLayer(index)} aria-pressed={activeLayer === index}><span>{short === "Business" ? "⌂" : short === "Web" ? "▣" : short === "AI" ? "✦" : "◎"}</span><b>{short}</b><small>{index === activeLayer ? "Viewing" : "Explore"}</small></button>)}
-        </div>
-        <div className="layer-detail"><span>0{activeLayer + 1}</span><strong>{layer[1]}</strong><p>{layer[2]}</p></div>
-      </div>
-    </section>
+    <section className="solutions section-pad" id="services"><div className="section-heading"><div><p className="eyebrow">CORE CAPABILITIES</p><h2>Integrated systems.<br/>Built with purpose.</h2></div><p>From first principles to long-term optimization, we design and build digital systems that improve how organizations serve customers, manage information, and operate.</p></div><div className="solution-grid capability-grid">{services.map((service,index)=><article className="solution-card" key={service.title}><span className="solution-icon">{String(index+1).padStart(2,"0")}</span><h3>{service.title}</h3><p>{service.description}</p><Link href={service.href!}>Explore {service.title} <span>→</span></Link></article>)}</div></section>
 
-    <section className="philosophy section-pad" id="about"><div className="sketch-house" aria-hidden="true"><i /><i /><i /><i /></div><div><p className="eyebrow">OUR PHILOSOPHY</p><h2>Don’t buy a website.<br />Build the right foundation.</h2><p>We believe digital success starts with architecture—clear strategy, solid structure, and systems designed to last. Everything we build is intentional, integrated, and aligned to your business goals.</p></div></section>
+    <section className="connected-section section-pad"><div><p className="eyebrow">CONNECTED BUSINESS ARCHITECTURE</p><h2>Your website should not operate alone.</h2><p>A modern business may rely on a website, inventory platform, point-of-sale system, accounting software, customer database, email service, payment provider, analytics, and internal workflows. We architect how those systems communicate.</p><Link className="text-link" href="/solutions">Explore connected solutions <span>→</span></Link></div><div className="system-map">{systemLabels.map((label,index)=><span key={label} style={{"--system-index":index} as React.CSSProperties}>{label}</span>)}</div></section>
 
-    <section className="solutions section-pad" id="solutions"><div className="section-heading"><div><p className="eyebrow">SOLUTIONS</p><h2>Integrated solutions.<br />Built to scale.</h2></div><p>From first principles to long-term performance, we design and build digital systems that work.</p></div><div className="solution-grid">{solutions.map(([title, text, icon], index) => <article className={`solution-card ${expandedSolution === index ? "expanded" : ""}`} key={title}><span className="solution-icon">{icon}</span><h3>{title}</h3><p>{text}</p><button onClick={() => setExpandedSolution(expandedSolution === index ? null : index)} aria-expanded={expandedSolution === index}>{expandedSolution === index ? "Show less" : "Learn more"} <span>→</span></button>{expandedSolution === index && <div className="solution-extra">Designed as one connected layer of your broader digital foundation.</div>}</article>)}</div></section>
+    <section className="feature-split section-pad"><div><p className="eyebrow">INVENTORY + POS INTEGRATION</p><h2>Connect inventory, sales, and customer experience.</h2><p>Where supported by the client’s existing systems, we can architect product search, structured requests, availability checks, staff routing, approved payments, notifications, and reporting.</p><aside className="notice"><strong>Technical discovery required.</strong> Actual capabilities depend on platform APIs, documentation, permissions, security requirements, business rules, and vendor fees.</aside><Link className="button button-dark" href="/solutions/inventory-pos-integration">Explore Inventory and POS Integration <span>→</span></Link></div><div><p className="eyebrow">EXPERT AI WORKFLOWS</p><h2>AI designed around the work—not added as decoration.</h2><p>We design specialized AI experiences for information discovery, intake, document organization, next-step preparation, education, and operational support—with guardrails and human review appropriate to the task.</p><aside className="notice">AI outputs may contain errors. Legal, medical, financial, safety, and compliance decisions require qualified human review.</aside><Link className="button button-dark" href="/services/ai-systems">Explore AI Systems <span>→</span></Link></div></section>
 
-    <section className="industries section-pad" id="industries"><div><p className="eyebrow">INDUSTRIES WE SERVE</p><h2>Deep expertise across<br />high-performing industries.</h2></div><div className="industry-chips">{industries.map((industry, index) => <button className={activeIndustry === industry ? "selected" : ""} onClick={() => setActiveIndustry(industry)} aria-pressed={activeIndustry === industry} key={industry}><span>{["▣", "+", "▥", "✦", "▤", "▥", "▱", "♡"][index]}</span>{industry}</button>)}<p className="industry-note">Selected focus: <strong>{activeIndustry}</strong></p></div></section>
+    <section className="product-preview section-pad"><div className="section-heading"><div><p className="eyebrow">TRUSTed PRODUCT LAB</p><h2>We build products,<br/>not just projects.</h2></div><p>Internal product initiatives inform how we approach architecture, automation, education, and AI-enabled workflows. Status labels reflect their current stage.</p></div><div className="content-card-grid">{products.map(product=><article key={product.title}><span className="status-label">{product.status}</span><h3>{product.title}</h3><p>{product.description}</p></article>)}</div><Link className="text-link" href="/products">Explore TRUSTed Products <span>→</span></Link></section>
 
-    <section className="process section-pad" id="process"><div className="process-lead"><p className="eyebrow">OUR PROCESS</p><h2>A proven architecture process. Measurable outcomes.</h2></div><div className="process-list">{process.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><i>{["○", "◇", "╱", "</>", "↗", "▥"][index]}</i><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section className="industries section-pad"><div><p className="eyebrow">INDUSTRIES WE SERVE</p><h2>Architecture adapted to the way your organization works.</h2></div><div className="industry-chips">{industries.map(industry=><Link href="/industries" key={industry}>{industry}</Link>)}</div></section>
 
-    <section className="final-cta"><div className="cta-sketch" aria-hidden="true" /><div><h2>Let’s build what’s next.</h2><p>Start a conversation about your project.</p></div><a className="button button-outline" href={projectEmail}>Start a conversation <span>→</span></a></section>
+    <section className="process-home section-pad"><div className="process-lead"><p className="eyebrow">OUR PROCESS</p><h2>A disciplined path from uncertainty to working systems.</h2></div><div className="process-grid-ten">{processStages.map(([title,description],index)=><article key={title}><span>{String(index+1).padStart(2,"0")}</span><h3>{title}</h3><p>{description}</p></article>)}</div><Link className="text-link" href="/process">View the full process <span>→</span></Link></section>
 
-    <footer><div className="footer-brand"><a className="wordmark" href="#top"><span>TRUST</span><em>ed</em><b>Digital Architecture</b></a><p>We design and build the digital foundation that modern businesses rely on to operate, adapt, and grow.</p></div><div><b>Solutions</b><a href="#solutions">Website Architecture</a><a href="#solutions">Software Development</a><a href="#solutions">AI Solutions</a><a href="#solutions">Automation & Operations</a></div><div><b>Company</b><a href="#about">About</a><a href="#process">Our Process</a><a href={projectEmail}>Contact</a></div><div><b>Let’s Talk</b><a href="mailto:caleb@trustedacademy.net">caleb@trustedacademy.net</a><p>Digital architecture for modern business.</p></div><small>© 2026 TRUSTed Digital Architecture. All rights reserved.</small></footer>
-  </main>;
+    <section className="final-cta"><div className="cta-sketch" aria-hidden="true"/><div><h2>Let us build what your business actually needs.</h2><p>Start with a website, an integration, an internal application, or a complete digital architecture plan.</p></div><Link className="button button-outline" href={emailHref}>Start a conversation <span>→</span></Link></section>
+  </main><SiteFooter /></>;
 }
