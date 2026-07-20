@@ -4,7 +4,7 @@ Public marketing website for TRUSTed Digital Architecture, a founder-led digital
 
 ## Maturity
 
-Production-readiness and founder-review phase. The approved public information architecture is implemented; accessibility, responsive, and release validation are the active mission.
+AI Assistant MVP phase. The approved public information architecture and production-readiness foundation are implemented; the current mission adds a grounded site-wide assistant with an honest appointment-request handoff.
 
 ## Technology
 
@@ -14,6 +14,7 @@ Production-readiness and founder-review phase. The approved public information a
 - CSS visual system with no runtime UI dependency
 - ESLint and Next.js Core Web Vitals rules
 - Vitest content and route contracts
+- OpenAI Responses API through the official server-side Node SDK
 - Vercel deployment using standard Next.js output
 
 ## Requirements
@@ -22,7 +23,7 @@ Production-readiness and founder-review phase. The approved public information a
 - npm
 - Port `3023` available for local development
 
-No environment variables, database, external AI provider, or API key is required.
+The website itself requires no database. The AI assistant requires `OPENAI_API_KEY` in ignored `.env.local`. Copy `.env.example` to `.env.local` and supply the key securely; never commit or expose it to browser code.
 
 ## Install and run
 
@@ -62,6 +63,14 @@ npm start
 - `/terms`
 
 Contact and website-audit forms are explicitly non-functional previews. Authentication, databases, payments, uploads, backend services, and live external integrations are outside the current product boundary.
+
+## AI website assistant
+
+The site-wide assistant calls `/api/assistant`, which uses the OpenAI Responses API on the server. It is grounded in approved website content, bounds conversation length, limits response size, uses best-effort instance-local rate limiting, sends a pseudonymous safety identifier, and sets `store: false`.
+
+The website does not write chat transcripts to a database or browser storage. Messages are sent to OpenAI for processing, so visitors are instructed not to submit sensitive or confidential information. Appointment requests use a pre-addressed email handoff; no appointment is confirmed until a human responds, and no calendar integration is currently connected.
+
+For a production deployment, configure `OPENAI_API_KEY` in Vercel through an approved secure workflow. The local `.env.local` file is not deployed.
 
 ## Repository structure
 

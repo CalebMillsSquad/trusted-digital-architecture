@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssistantWidget } from "@/components/assistant-widget";
 import "./globals.css";
 import "./expanded.css";
 
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         {children}
+        <AssistantWidget />
       </body>
     </html>
   );

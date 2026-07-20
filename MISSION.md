@@ -1,67 +1,71 @@
 # Active Mission
 
-Status: Complete — ready for founder review
+Status: Blocked — local implementation and verification are complete; live OpenAI response validation awaits API quota
 
 ## Mission Title
 
-Public Website Production Readiness and Founder Review
+Founder-Approved Public AI Website Assistant MVP
 
 ## Mission Objective
 
-Bring the complete TRUSTed Digital Architecture public website from feature-complete implementation to a verified, accessible, responsive, maintainable founder-review release without expanding the approved public-site boundary.
+Add a secure, accessible website assistant that answers questions from approved TRUSTed Digital Architecture content, guides visitors to the right service or solution, and provides an honest appointment-request handoff without claiming calendar booking exists.
 
 ## Product Context
 
-TRUSTed Digital Architecture is a founder-led digital architecture and software development firm serving organizations that need websites, software, AI-system planning, automation, integrations, learning platforms, and connected business systems. The website must establish credibility, explain capabilities honestly, and provide clear paths to begin a conversation.
+Visitors may arrive without knowing which capability fits their needs. A grounded assistant can explain TRUSTed services, solutions, process, product statuses, and next steps while preserving the premium public-site experience and directing uncertain or sensitive questions to a human.
 
 ## Approved Scope
 
-- Preserve the complete approved information architecture and premium visual system.
-- Improve semantic structure, keyboard navigation, focus behavior, metadata, responsive reflow, and content legibility.
-- Strengthen route/content regression tests and local smoke verification.
-- Fix production-readiness defects discovered during review.
-- Keep project operating documents, launcher instructions, and verification evidence current.
-- Prepare an exact founder-review checklist for the public experience.
+- Reuse the founder-approved `OPENAI_API_KEY` from ignored `.env.local`.
+- Add a server-only OpenAI Responses API route with input validation, bounded history, best-effort rate limiting, safe errors, and no website database.
+- Ground responses in approved public website content and claim guardrails.
+- Add an accessible, responsive assistant widget to every public page.
+- Provide an appointment-request email handoff and state that appointments remain unconfirmed until a human responds.
+- Add assistant-specific privacy and terms disclosures.
+- Add regression tests and complete local build, API, route, and browser validation.
 
 ## Out of Scope
 
-- Authentication, databases, payments, uploads, private applications, dashboards, or portals
-- Live AI providers, API keys, backend services, or working external integrations
-- Custom domains, DNS changes, or a changed deployment strategy
-- Unapproved pricing, public claims, testimonials, case studies, or product availability
-- Activating contact or website-audit data collection
+- A live calendar connection or automated appointment confirmation
+- Database-backed conversation storage, CRM writes, uploads, authentication, payments, or private-app workflows
+- Autonomous external actions or tool execution
+- Sensitive-data intake or professional legal, medical, financial, safety, or compliance advice
+- Production deployment, Vercel environment configuration, or public activation without founder approval
 
 ## Milestones
 
-1. **Baseline and operating foundation — Complete**
-   - Reconcile repository truth and approved specifications.
-   - Establish the durable mission operating files and living execution plan.
-2. **Accessible navigation and page semantics — Complete**
-   - Provide keyboard skip navigation, visible focus, and current-page navigation state.
-   - Ensure every route has one H1 and a unique, descriptive page title.
-3. **Responsive and interaction quality — Complete**
-   - Verify the homepage and representative internal routes at mobile, tablet, and desktop widths.
-   - Correct overflow, overlap, illegible controls, or broken interaction states.
-   - Verify the interactive architecture panel by pointer and keyboard.
-4. **Reliability and regression coverage — Complete**
-   - Enforce the approved route inventory, honest status labels, unique metadata inputs, and navigation destinations in automated tests.
-   - Run local route smoke checks and review browser console errors.
-5. **Release validation and founder review readiness — Complete**
-   - Pass lint, strict typecheck, tests, and production build.
-   - Reconcile status, backlog, README, and execution plan.
-   - Leave the local application running on its assigned port with a concise review checklist.
+1. **Credential and provider foundation — Complete**
+   - Verify the key exists without displaying it.
+   - Verify `.env.local` is excluded from Git.
+   - Confirm the current supported Responses API and model guidance.
+2. **Grounded server-side assistant — Complete**
+   - Validate and bound requests.
+   - Keep the API key server-only and disable OpenAI response storage.
+   - Add approved knowledge, safety boundaries, rate limiting, and safe provider-error handling.
+3. **Accessible website experience — Complete**
+   - Add the site-wide assistant launcher, conversation panel, suggestions, loading state, errors, and appointment email handoff.
+   - Preserve responsive reflow, keyboard semantics, visible focus, and reduced motion.
+4. **Privacy, reliability, and regression coverage — Complete**
+   - Add clear in-product data and appointment limitations.
+   - Update privacy and terms disclosures.
+   - Add request-contract and assistant-guardrail tests.
+5. **Validation and founder review — Blocked by API quota**
+   - Lint, strict typecheck, tests, production build, route smoke checks, and desktop/mobile browser checks pass.
+   - Invalid requests and the provider-quota path fail safely without exposing secrets or provider details.
+   - A real model response must still be confirmed after API quota is available.
 
 ## Acceptance Criteria
 
-- All 28 public routes plus the homepage build and return successful local responses.
-- Each public route has a unique descriptive title, meta description, one H1, and logical heading structure.
-- Primary navigation exposes the current page and remains keyboard accessible at supported widths.
-- A keyboard user can skip repeated navigation and operate the homepage architecture selector.
-- Mobile, tablet, and desktop checks show no horizontal page overflow or overlapping architecture controls.
-- Prototype forms and unfinished products remain clearly and accurately labeled.
-- No unapproved backend, data collection, integration, or public claim is introduced.
-- Lint, strict typecheck, tests, and production build pass.
-- Project documentation reflects current truth and identifies one next internal milestone.
+- The API key is never exposed to client code, logs, Git, or user-visible errors.
+- `.env.local` is ignored and `.env.example` contains only a blank variable placeholder.
+- The assistant is available across public pages and is usable at mobile, tablet, and desktop widths.
+- Responses are grounded in approved TRUSTed content and refuse unsupported claims.
+- Conversation history is bounded and is not written to a website database or browser storage.
+- Visitors receive transparent OpenAI-processing and sensitive-data notices.
+- Appointment requests use a human email handoff and are never described as confirmed.
+- Invalid, oversized, rate-limited, missing-configuration, provider-quota, and provider-failure paths return safe errors.
+- Lint, strict typecheck, tests, production build, HTTP smoke checks, and browser console checks pass.
+- A real OpenAI response is verified after the selected API project has available quota.
 - The local site is running at `http://localhost:3023`.
 
 ## Validation Requirements
@@ -70,14 +74,15 @@ TRUSTed Digital Architecture is a founder-led digital architecture and software 
 - `npm run typecheck`
 - `npm test`
 - `npm run build`
-- HTTP smoke checks across every public route
-- Browser keyboard and interactive-control checks
-- Browser responsive checks at mobile, tablet, and desktop widths
+- API validation and live-response smoke tests
+- Public-route HTTP smoke checks
+- Mobile, tablet, and desktop assistant browser checks
 - Browser console error review
+- Secret-exclusion and Git worktree review
 
 ## Stop Conditions
 
-Codex may stop only when all acceptance criteria are satisfied, a genuine technical blocker exists, a founder decision is required, continuing needs an unapproved paid service, or continuing would create a security, privacy, legal, or deployment risk.
+Codex may stop only when all acceptance criteria are satisfied, a genuine technical or account blocker prevents progress, a founder decision is required, or continuing would create an unapproved privacy, legal, cost, calendar-integration, or deployment risk.
 
 ## Completion Report
 

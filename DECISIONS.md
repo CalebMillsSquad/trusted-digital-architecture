@@ -23,3 +23,7 @@ Founder approved aligning the local folder, package, GitHub repository, and Verc
 ## 2026-07-19 — Mission-driven repository operating model
 
 Founder approved a durable repository operating system centered on `AGENTS.md`, one coherent active `MISSION.md`, current-truth status, an ordered backlog, and a living execution plan. Codex should continue across routine internal milestones without repeated approval and stop only for mission completion, a genuine blocker, or a founder-level product, security, privacy, legal, cost, deployment, public-claim, destructive-migration, or product-boundary decision.
+
+## 2026-07-20 — Public AI website assistant
+
+Founder approved securely reusing the project’s ignored `OPENAI_API_KEY` to build a public AI website assistant. The assistant may answer website questions and guide appointment requests, but it must not claim that an appointment is scheduled or confirmed until a real calendar connection is implemented and verified.

@@ -1,71 +1,78 @@
 # Execution Plan
 
-Last updated: 2026-07-19
+Last updated: 2026-07-20
 
 ## Active Mission
 
-Public Website Production Readiness and Founder Review
+Founder-Approved Public AI Website Assistant MVP
 
 ## Repository Observations
 
-- The approved public information architecture is implemented through a Next.js 15 App Router catch-all route backed by typed content.
-- The homepage is a focused client component because its architecture panel is interactive; internal pages render from reusable server components.
-- The site has a dedicated local port, guarded Windows launchers, tests, lint, typecheck, build scripts, GitHub history, and a verified Vercel production deployment.
-- The initial production-readiness audit identified duplicated internal-page metadata titles, no skip link or current-page navigation state, non-strict TypeScript configuration, and an overlap between mobile architecture controls and the active-layer detail.
+- The website is a statically generated Next.js public site with a shared root layout, making a site-wide assistant widget straightforward without route duplication.
+- The founder approved reuse of an existing key in ignored `.env.local`; no secret value was read or displayed.
+- Approved public content is already centralized and can ground the assistant without a database or retrieval provider.
+- No calendar, CRM, intake storage, or authentication system exists.
+- The selected OpenAI API project currently returns `insufficient_quota`, so successful live-response validation requires an account-side quota change.
 
 ## Implementation Sequence
 
-1. Normalize `AGENTS.md`, `MISSION.md`, `PROJECT_STATUS.md`, `BACKLOG.md`, `DECISIONS.md`, and `README.md`.
-2. Add accessible skip navigation and current-page semantics without replacing the established site shell.
-3. Make internal-page metadata unique and enable strict TypeScript validation.
-4. Repair mobile architecture-panel spacing and strengthen focus/reflow styles.
-5. Expand automated content and route contracts.
-6. Run lint, typecheck, tests, build, full-route HTTP smoke tests, and responsive browser checks.
-7. Reconcile documentation and prepare the founder-review checklist.
+1. Verify secret presence and Git exclusion without displaying the value.
+2. Add the official OpenAI Node SDK and current Responses API integration.
+3. Add bounded request validation, grounded instructions, claim guardrails, rate limiting, no-store behavior, safe identifiers, and safe errors.
+4. Add the accessible responsive widget, suggestions, loading/errors, disclosure, and appointment email handoff.
+5. Update privacy/terms content and durable repository documentation.
+6. Add contract and prompt-guardrail tests.
+7. Run lint, strict typecheck, tests, build, API tests, route smoke checks, and responsive browser checks.
+8. Leave the local site running and report the exact account and founder decisions needed for production activation.
 
 ## Dependencies
 
-- Existing Next.js, React, TypeScript, ESLint, and Vitest toolchain
-- Local Node.js/npm installation
-- Port `3023` remaining available to this project
-- No new runtime dependency or external service is required
+- Existing Next.js/React/TypeScript application
+- OpenAI Node SDK
+- Ignored local `OPENAI_API_KEY`
+- OpenAI API quota for successful live-response validation
+- Port `3023`
 
 ## Risks
 
-- CSS is compact and shared across many pages; responsive changes require representative visual checks.
-- The full homepage is long, so mobile changes must avoid unnecessary additional height while preserving control separation.
-- Vercel automatically deploys pushed `main` commits; production publication remains a separate founder-approved action.
-- Legal and secure-intake decisions remain outside this mission.
+- A public endpoint can create unbounded cost; bounded history, output limits, and best-effort rate limiting reduce but do not eliminate abuse risk.
+- Serverless in-memory rate limiting is instance-local and is not sufficient for high-volume production protection.
+- Assistant messages leave the website for OpenAI processing; clear notice and qualified privacy review are required.
+- Model output may be wrong despite grounding, so unsupported claims, high-impact advice, and appointment confirmation must be explicitly prohibited.
+- Production needs a separately configured Vercel secret; `.env.local` is local only.
 
 ## Validation Plan
 
-- Static checks: lint, strict typecheck, tests, production build
-- HTTP checks: homepage plus every key in the typed route registry
-- Accessibility checks: landmarks, one H1, skip-link target, current-page state, button keyboard behavior, visible focus
-- Responsive checks: 390px mobile, 768px tablet, and 1440px desktop, including document overflow and architecture-panel geometry
-- Reliability checks: browser console errors and internal route navigation
+- Secret presence and `git check-ignore` without value output
+- Request parser and prompt-guardrail unit tests
+- Invalid-request and quota-error API tests
+- Successful live API response after quota is available
+- Lint, strict typecheck, tests, and production build
+- Public-route HTTP smoke checks
+- Widget open/close, suggestion, submit, error, appointment disclosure, mobile/tablet/desktop reflow, and console checks
 
 ## Progress Checklist
 
-- [x] Audit repository structure, documents, configuration, scripts, launchers, and current state
-- [x] Select the largest coherent unblocked mission
-- [x] Normalize the six root operating files
-- [x] Implement accessibility and metadata refinements
-- [x] Repair responsive defects
-- [x] Expand regression tests
-- [x] Pass automated validation
-- [x] Pass full-route and responsive browser checks
-- [x] Reconcile final status and founder-review notes
+- [x] Verify key presence and Git exclusion
+- [x] Confirm current OpenAI model and Responses API guidance
+- [x] Add server-side assistant route and grounded instructions
+- [x] Add responsive accessible assistant widget
+- [x] Add privacy/terms and appointment limitations
+- [x] Add assistant regression tests
+- [x] Complete final automated and production build validation
+- [x] Complete route and responsive browser verification
+- [ ] Verify a successful model reply after quota is available
+- [x] Reconcile final status and founder handoff
 
 ## Discovered Issues
 
-- Resolved: internal route metadata now uses a unique descriptive title, with concise service metadata where appropriate.
-- Resolved: repeated navigation can be skipped directly to `#main-content`.
-- Resolved: navigation exposes the current route with `aria-current="page"`.
-- Resolved: architecture-layer controls and the active detail no longer overlap at mobile or tablet widths.
-- Resolved: TypeScript strict mode is enabled and passing.
-- Monitored: two moderate transitive PostCSS advisories have no safe automated fix in the current compatible Next.js line.
+- Resolved: Vitest 3.2.4 carried a critical advisory; upgraded to a compatible patched release.
+- Blocking live response: the selected OpenAI project returns `429 insufficient_quota`.
+- Known: Next.js transitively includes two moderate PostCSS advisories with no safe compatible automated fix.
 
 ## Decisions Needed
 
-Founder visual and copy feedback is the next required input. Secure intake, legal review, analytics, live integrations, and production publication remain separate founder-level decisions.
+- Add API quota or credits to the selected OpenAI Platform project.
+- Approve privacy/legal wording before production activation.
+- Select a real calendar provider and booking rules before automated appointment confirmation.
+- Approve Vercel secret configuration and production deployment after review.

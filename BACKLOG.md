@@ -2,29 +2,32 @@
 
 ## Now
 
-- Complete founder review of the production-ready public website.
-- Record and implement only founder-approved visual or copy refinements.
-- Repeat lint, strict typecheck, tests, build, route smoke checks, and responsive browser checks after feedback changes.
+- Add quota or credits to the selected OpenAI API project and verify a real grounded response.
+- Complete founder review of assistant tone, design, disclosures, and appointment handoff.
+- Obtain qualified privacy/legal review before production activation.
 
 ## Next
 
-- Define the next coherent product mission after founder review.
-- Prepare a secure-intake architecture decision for contact and website-audit workflows if the founder chooses to activate them.
+- Select and approve a calendar provider, account, booking rules, availability source, timezone behavior, notifications, privacy terms, and human escalation process.
+- Implement real appointment scheduling only after that architecture is approved.
+- Configure `OPENAI_API_KEY` securely in Vercel and deploy only after explicit founder approval.
 
 ## Later
 
-- Perform dependency-maintenance review when an upstream compatible Next.js/PostCSS update is available.
-- Evaluate privacy-respecting analytics only after founder approval of data ownership, privacy, and provider choices.
-- Develop real integration or AI demonstrations only through separately approved product missions with verified infrastructure.
+- Add a measured assistant evaluation set covering service routing, unsupported claims, sensitive-data handling, appointment language, and human escalation.
+- Evaluate privacy-respecting assistant analytics only after data ownership, retention, consent, and provider choices are approved.
+- Add approved CRM or intake handoff only through a separate secure-integration mission.
+- Perform dependency maintenance when an upstream compatible Next.js/PostCSS update is available.
 
 ## Deferred
 
-- Rename the local directory from `TRUSTed Website Architect` to `TRUSTed Digital Architecture` after the active workspace releases its Windows handle.
-- Activate contact or website-audit submission, storage, notifications, or file upload until secure infrastructure is approved.
+- Database-backed chat history, uploads, authentication, payments, private portals, and autonomous external actions.
+- Rename the local directory after the active workspace releases its Windows handle.
 - Connect a custom domain or change DNS.
 
 ## Rejected or Superseded
 
-- The former TRUSTed Web Architecture company identity is superseded by TRUSTed Digital Architecture; Website Architecture remains the flagship solution.
-- Temporary ChatGPT Site hosting is not used.
-- Presenting unfinished TRUSTed products or integrations as live is outside the approved direction.
+- Claiming that an appointment is scheduled before a real calendar confirms it.
+- Exposing the OpenAI API key to browser code or source control.
+- Presenting the assistant as a general-purpose expert outside approved TRUSTed Digital Architecture knowledge.
+- Temporary ChatGPT Site hosting.

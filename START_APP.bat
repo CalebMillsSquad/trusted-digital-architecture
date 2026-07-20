@@ -21,7 +21,7 @@ if %errorlevel% equ 0 (
   exit /b 0
 )
 
-netstat -ano | findstr ":3023 .*LISTENING" >nul
+powershell -NoProfile -Command "if (Get-NetTCPConnection -LocalPort 3023 -State Listen -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }"
 if %errorlevel% equ 0 (
   echo Port 3023 is occupied by another process. No process was stopped.
   echo Close the conflicting app or inspect the port before retrying.
