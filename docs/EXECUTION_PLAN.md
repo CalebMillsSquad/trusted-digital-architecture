@@ -17,12 +17,13 @@ Founder-Approved Production Domain and Vercel Launch
 - [x] Confirm no conflicting `digitalarchitecture` record, then save only the exact Vercel CNAME in Squarespace.
 - [x] Verify public DNS resolution, Vercel Valid Configuration, HTTPS, 28 routes, API boundaries, desktop/mobile reflow, assistant interface, interactive controls, console health, and deployed secret safety.
 - [x] Update current-truth, backlog, decision, setup, and deployment documentation and push the closeout commit.
+- [x] Add and verify a first-party TRUSTed favicon required by the ecosystem production-acceptance standard.
 
 ## Verification Evidence
 
 - Lint and strict typecheck passed.
-- 66 tests passed across four files.
-- Production build passed with 33 generated pages and three dynamic API routes; `.next/routes-manifest.json` and `.next/BUILD_ID` exist.
+- 68 tests passed across four files.
+- Production build passed with 36 generated pages, including `/icon.svg`, and three dynamic API routes; `.next/routes-manifest.json` and `.next/BUILD_ID` exist.
 - Tracked source, Git history, local client output, and deployed client assets contain no OpenAI key pattern.
 - Vercel deployment is Ready and uses the correct repository, `main`, Next.js preset, repository root, `npm install`, `npm run build`, and default output directory.
 - CNAME `digitalarchitecture` resolves publicly to `56546e7b60344d4f.vercel-dns-017.com` with TTL 14400 seconds; Vercel reports Valid Configuration.

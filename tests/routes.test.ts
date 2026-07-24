@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { pages, primaryNavigation, products, services, solutions } from "../lib/site-content";
 
 const requiredRoutes = [
@@ -48,5 +50,9 @@ describe("public website content", () => {
     for (const [, href] of primaryNavigation) {
       expect(pages[href.slice(1)]).toBeDefined();
     }
+  });
+
+  it("ships the TRUSTed Digital Architecture favicon", () => {
+    expect(existsSync(path.join(process.cwd(), "app", "icon.svg"))).toBe(true);
   });
 });

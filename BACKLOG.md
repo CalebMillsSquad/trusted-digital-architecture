@@ -10,6 +10,7 @@
 
 ## Verified in this pass
 
+- Added a first-party TRUSTed Digital Architecture favicon and regression assertion for ecosystem production acceptance.
 - Added canonical metadata, Open Graph identity, structured data, robots, sitemap, and conservative security headers.
 - Lead endpoint failure semantics now include a request id and explicit storage/email statuses without persisting or exposing contact data.
 - Lead boundary includes a honeypot and consent-version/timestamp validation; durable storage remains gated.
